@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState} from 'react';
 import { View, Text, TouchableHighlight, StyleSheet, Dimensions } from 'react-native';
+import ScrollHeader from '../../components/ScrollHeader/ScrollHeader';
 import MenuIcon from '../../components/MenuIcon/MenuIcon';
 
 export default Home = (props) => {
@@ -16,10 +17,26 @@ export default Home = (props) => {
     }, []);
     
     return(
-        <View>
-            <Text>
-                Home Page
-            </Text>
+        <View style={styles.container}>
+            <ScrollHeader />
+            <View style={styles.content}>
+                <Text style={styles.text}>
+                    Home Page
+                </Text>
+            </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor:'black',
+        flex:1,
+    },
+    content:{
+        flex:50,
+    },
+    text:{
+        color:'white',
+    }
+})

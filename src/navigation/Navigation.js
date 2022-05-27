@@ -1,11 +1,12 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerContainer from './screens/DrawerContainer/DrawerContainer';
-import Home from './screens/Home/Home';
-import Settings from './screens/Settings/Settings';
-import Wallet from './screens/Wallet/Wallet';
+import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
+import Home from '../screens/Home/Home';
+import Settings from '../screens/Settings/Settings';
+import Wallet from '../screens/Wallet/Wallet';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,10 @@ const MainNavigator = () => {
                     textAlign: 'center',
                     alignSelf: 'center',
                     flex:1,
+                    color:'white',
+                },
+                headerStyle:{
+                    backgroundColor:'black',
                 }
             }}>
                 <Stack.Screen name='Home' component={Home}/>
@@ -35,9 +40,9 @@ const DrawerStack = () => {
             drawerPosition='left'
             initialRouteName='Main'
             drawerStyle={{
-                width:250
+                width:250,
             }}
-            screenOptions={{ headerShown: false }}
+            screenOptions={{ headerShown: false,}}
             drawerContent={({navigation}) => <DrawerContainer navigation= {navigation}/>}
         >
             <Drawer.Screen name='Main' component={MainNavigator} />
@@ -48,6 +53,7 @@ const DrawerStack = () => {
 export default Navigation = () => {
     return(
         <NavigationContainer>
+            <StatusBar barStyle='light-content'/>
             <DrawerStack />
         </NavigationContainer>
     )

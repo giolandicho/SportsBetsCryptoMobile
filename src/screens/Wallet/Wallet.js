@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default Wallet = (props) => {
     const { navigation } = props;
@@ -14,10 +14,20 @@ export default Wallet = (props) => {
         });
     }, []);
     return(
-        <View>
-            <Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>
                 Wallet Page
             </Text>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor:'black',
+        flex:1,
+    },
+    text:{
+        color:'white',
+    }
+})

@@ -1,15 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import MenuButton from '../../components/MenuButton/MenuButton';
+import CloseButton from '../../components/CloseButton/CloseButton';
 
 export default DrawerContainer = (props) => {
     const { navigation } = props;
     return(
         <View style={styles.content}>
             <View style={styles.container}>
+                <CloseButton onPress={()=> navigation.closeDrawer()}/>
                 <MenuButton
                     title='HOME'
-                    source={require('../../../assets/icons/home.png')}
+                    source={require('../../../assets/icons/home-darkmode.png')}
                     onPress={() => {
                         navigation.navigate('Home');
                         navigation.closeDrawer();
@@ -17,7 +19,7 @@ export default DrawerContainer = (props) => {
                 />
                 <MenuButton
                     title='SETTINGS'
-                    source={require('../../../assets/icons/settings.png')}
+                    source={require('../../../assets/icons/settings-darkmode.png')}
                     onPress={() => {
                         navigation.navigate('Settings');
                         navigation.closeDrawer();
@@ -25,7 +27,7 @@ export default DrawerContainer = (props) => {
                 />
                 <MenuButton
                     title='WALLET'
-                    source={require('../../../assets/icons/wallet.png')}
+                    source={require('../../../assets/icons/wallet-darkmode.png')}
                     onPress={() => {
                         navigation.navigate('Wallet');
                         navigation.closeDrawer();
@@ -41,10 +43,11 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      backgroundColor:'#22241f',
     },
     container: {
-      marginTop:100,  
+      marginTop:80,  
       flex: 1,
       alignItems: 'flex-start',
       paddingHorizontal: 20
