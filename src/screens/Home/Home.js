@@ -1,7 +1,18 @@
-import React, { useEffect, useRef, useState} from 'react';
-import { View, Text, TouchableHighlight, StyleSheet, Dimensions } from 'react-native';
-import ScrollHeader from '../../components/ScrollHeader/ScrollHeader';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import MenuIcon from '../../components/MenuIcon/MenuIcon';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Featured from '../Content/Sports/Featured';
+import NBA from '../Content/Sports/NBA';
+import NFL from '../Content/Sports/NFL';
+import MLB from '../Content/Sports/MLB';
+import Soccer from '../Content/Sports/Soccer';
+import NHL from '../Content/Sports/NHL';
+import Boxing from '../Content/Sports/Boxing';
+import MMA from '../Content/Sports/MMA';
+import NASCAR from '../Content/Sports/NASCAR';
+
+const Tab = createMaterialTopTabNavigator();
 
 export default Home = (props) => {
     const { navigation } = props;
@@ -17,26 +28,35 @@ export default Home = (props) => {
     }, []);
     
     return(
-        <View style={styles.container}>
-            <ScrollHeader />
-            <View style={styles.content}>
-                <Text style={styles.text}>
-                    Home Page
-                </Text>
-            </View>
-        </View>
+        
+            <Tab.Navigator 
+                screenOptions={{
+                    tabBarScrollEnabled: true,
+                    tabBarItemStyle:{
+                        width:'auto'
+                    },
+                    tabBarStyle:{
+                        backgroundColor:'black'
+                    },
+                    tabBarLabelStyle:{
+                        color:'white',
+                        fontSize:15,
+                    },
+                    tabBarContentContainerStyle:{
+                        height:'auto',
+                        width:'auto',
+                    },
+                }}
+            >
+                <Tab.Screen name='FEATURED' component={Featured}/>
+                <Tab.Screen name='NBA' component={NBA}/>
+                <Tab.Screen name='NFL' component={NFL}/>
+                <Tab.Screen name='MLB' component={MLB}/>
+                <Tab.Screen name='SOCCER' component={Soccer}/>
+                <Tab.Screen name='NHL' component={NHL}/>
+                <Tab.Screen name='BOXING' component={Boxing}/>
+                <Tab.Screen name='MMA' component={MMA}/>
+                <Tab.Screen name='NASCAR' component={NASCAR}/>
+            </Tab.Navigator>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor:'black',
-        flex:1,
-    },
-    content:{
-        flex:50,
-    },
-    text:{
-        color:'white',
-    }
-})
